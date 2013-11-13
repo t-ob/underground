@@ -1,0 +1,27 @@
+#+TITLE: Underground: maze generation in Clojure
+
+#+BEGIN_VERSE
+  It's only forever
+  It's not long at all
+  The lost and the lonely
+  That's underground
+
+    -- [[https://www.youtube.com/watch?v%3DJPRh537QyVo][David Bowie, Underground (1986)]]
+#+END_VERSE
+* Introduction
+  Maze generation
+* Algorithms
+** Prim
+   Prim's algorithm clasically is used to find a Minimum Spanning Tree
+   of a graph.  The randomised version can be used to generate mazes:
+   + Start with a grid full of walls.
+   + Pick a cell, mark it as part of the maze. Add the walls of the
+     cell to the wall list.
+   + While there are wills in the list:
+     + Pick a random wall from the list. If the cell on the opposite
+       side isn't in the maze yet:
+       + Make the wall a passage and mark the cell on the opposite
+         side as part of the maze.
+       + Add the neighbouring walls of the cell to the wall list.
+     + If the cell on the opposite side was already in the maze,
+       remove the wall from the list.
